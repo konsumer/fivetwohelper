@@ -13,8 +13,7 @@ import { useRoutes, usePath, A } from 'hookrouter'
 
 import './style.less'
 import { LinkNav } from './links-hookrouter'
-import routes from './routes'
-import PageNotFound from './pages/PageNotFound'
+import { routes, PageNotFound } from './routes'
 
 import { useData } from './data'
 
@@ -37,11 +36,11 @@ const App = () => {
           </Navbar.Body>
         </Navbar>
       </Header>
-      <Content className='page'>
-        {!data.fastDays.length && path !== '/setup' && (
+      <Content>
+        {data.fastDays.length !== 2 && path !== '/setup' && (
           <Message
             showIcon
-            description={<div>You haven't <A href='/setup'>set your fast days</A>. You will need to do this.</div>}
+            description={<div>You should have 2 fasting days. <A href='/setup'>Set it up</A>.</div>}
             type='warning'
           />
         )}

@@ -39,7 +39,7 @@ export default () => {
   const updateCalories = value => setData(d => ({ ...d, calories: value }))
 
   return (
-    <div>
+    <div className='page'>
       <h1>Setup</h1>
       <p>What days of the week do you want to fast?</p>
       <Toggle checkedChildren='Sunday' unCheckedChildren='Sunday' onChange={updateDay(0)} checked={data.fastDays.indexOf(0) !== -1} />
@@ -53,7 +53,7 @@ export default () => {
       <hr />
       <div>How many meals a day would you like to eat on fasting days? <Input min='2' max='3' onChange={updateMeal} type='number' value={data.meals} /></div>
       <hr />
-      <div>Roughly, how many calories will you eat on fasting days? <Input min='400' max='500' onChange={updateCalories} type='number' value={data.calories} /></div>
+      <div>Roughly, how many calories will you eat on fasting days? <Input step='20' min='400' max='500' onChange={updateCalories} type='number' value={data.calories} /></div>
     </div>
   )
 }

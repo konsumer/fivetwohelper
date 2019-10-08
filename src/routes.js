@@ -1,17 +1,24 @@
 import React from 'react'
 
-import PageHome from './pages/PageHome'
-import PageAbout from './pages/PageAbout'
-import PageHelp from './pages/PageHelp'
-import PageCalendar from './pages/PageCalendar'
-import PageSetup from './pages/PageSetup'
+import PageSetup from './pages/setup'
+import PageCalendar from './pages/calendar'
+import * as pages from './pages/**/*.md'
 
-const routes = {
-  '/': () => <PageHome />,
-  '/about': () => <PageAbout />,
-  '/help': () => <PageHelp />,
-  '/calendar': () => <PageCalendar />,
-  '/setup': () => <PageSetup />
+export const Page = ({ html, ...props }) => <div className='page' dangerouslySetInnerHTML={{ __html: html }} {...props} />
+
+export const PageNotFound = () => <Page html={pages.error404} />
+
+export const routes = {
+  '/': () => <Page html={pages.index} />,
+  '/setup': () => <PageSetup />,
+  '/calendar': () => <PageCalendar />
 }
 
+for (let i in pages) {
+  if (i !== 'index') {
+    routes[`/${i}`] = () => <Page html={pages[i]} />
+  }
+}
+
+export { pages }
 export default routes

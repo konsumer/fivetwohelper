@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "less": "latest",
+    "marked": "^0.7.0",
     "parcel-bundler": "latest",
     "rimraf": "latest",
     "surge": "latest"
