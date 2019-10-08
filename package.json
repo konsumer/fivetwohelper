@@ -1,0 +1,32 @@
+{
+  "name": "fivetwohelper",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "rimraf dist && parcel build src/index.html",
+    "predeploy": "npm run build",
+    "deploy": "surge dist/ fivetwohelper.surge.sh&& cp dist/index.html dist/200.html"
+  },
+  "gummicube": {
+    "render": "static",
+    "router": "hookrouter",
+    "deploy": "surge",
+    "host": "fivetwohelper.surge.sh",
+    "ci": false
+  },
+  "dependencies": {
+    "date-fns": "^2.4.1",
+    "hookrouter": "latest",
+    "react": "^16.10.2",
+    "react-dom": "latest",
+    "rsuite": "latest",
+    "use-persisted-state": "^0.3.0"
+  },
+  "devDependencies": {
+    "less": "latest",
+    "parcel-bundler": "latest",
+    "rimraf": "latest",
+    "surge": "latest"
+  }
+}
